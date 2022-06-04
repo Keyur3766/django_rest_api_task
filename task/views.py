@@ -9,11 +9,7 @@ from .serializers import taskModelSerializer
 from task.models import tasks
 
 from task import serializers
-# Create your views here.
 
-#class taskViewSet(viewsets.ModelViewSet):
-#    queryset = tasks.objects.all()
-#    serializer_class = taskModelSerializer
 
 class taskAPIView(APIView):
     serializer_class = taskModelSerializer
@@ -32,6 +28,7 @@ class taskAPIView(APIView):
 class taskPostView(APIView):
     serializer_class = taskModelSerializer
     def post(self, request, *args, **kwargs):
+
         task_info = request.data
 
         new_task = tasks.objects.create(name=task_info["name"],
